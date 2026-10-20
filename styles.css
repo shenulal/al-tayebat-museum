@@ -15,8 +15,8 @@
   --rule: rgba(58, 35, 22, 0.22);
   --rule-strong: rgba(58, 35, 22, 0.5);
 
-  --font-display: "Newsreader", "Times New Roman", serif;
-  --font-body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Playfair Display", "Times New Roman", serif;
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
   --font-arabic: "Amiri", "Noto Naskh Arabic", "Geeza Pro", serif;
 
   --text-base: clamp(0.95rem, 0.9rem + 0.2vw, 1rem);
@@ -34,10 +34,10 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--plaster); color: var(--ink); font-family: var(--font-body); font-size: var(--text-base); line-height: 1.6; position: relative; }
+body { margin: 0; background: var(--plaster); color: var(--ink); font-family: var(--font-body); font-size: var(--text-base); line-height: 1.6; position: relative; font-feature-settings: "cv11", "ss01"; }
 body::after { content: ""; position: fixed; inset: 0; background: var(--grain); opacity: 0.08; pointer-events: none; mix-blend-mode: multiply; z-index: 99; }
 img, video, iframe { max-width: 100%; display: block; }
-h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; line-height: 1.08; margin: 0; letter-spacing: -0.008em; font-optical-sizing: auto; }
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; line-height: 1.12; margin: 0; letter-spacing: -0.01em; font-optical-sizing: auto; }
 p { margin: 0; }
 a { color: inherit; }
 button { font: inherit; color: inherit; cursor: pointer; }

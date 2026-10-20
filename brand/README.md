@@ -3,7 +3,7 @@
 Emblem: the museum seen from Rayhanat Al Jazirah Street, reduced to the five things that make it unmistakable — stacked teak rawasheen, the pointed door, the crenellated roofline, the minaret with its green cap, and the green dome. The dashed line is the route through the houses.
 
 Colours: teak #3a2316 (ink), dome green #2d6b50, plaster #faf6ee (paper).
-Type in the lockups: Amiri 700, Newsreader (opsz 72, wght 500), Hanken Grotesk 500 — all converted to outlines, no fonts needed to render.
+Type in the lockups: Amiri 700, Playfair Display 500, Inter 500 — all converted to outlines, no fonts needed to render.
 
 | File | Use |
 |---|---|
