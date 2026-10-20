@@ -4,3 +4,6 @@
 node_modules/
 preview-hero.jpg
 brand/logo-preview.jpg
+proposal/
+Proposal-*.pdf
+.playwright-mcp/
