@@ -81,9 +81,9 @@ def emblem(ink="currentColor", green=GREEN, house_fill="none", cut=PLASTER):
 </g>'''
 
 
-AR_FONT = HERE / "fonts/NotoNaskhArabic.ttf"
-EN_FONT = HERE / "fonts/Fraunces.ttf"
-SM_FONT = HERE / "fonts/InstrumentSans.ttf"
+AR_FONT = HERE / "fonts/Amiri.ttf"
+EN_FONT = HERE / "fonts/Newsreader.ttf"
+SM_FONT = HERE / "fonts/HankenGrotesk.ttf"
 
 ar_d, ar_w = text_path("مدينة الطيبات العالمية", AR_FONT, 34)
 en_d, en_w = text_path("Al Tayebat International City", EN_FONT, 30)
