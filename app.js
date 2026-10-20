@@ -433,8 +433,86 @@
     window.addEventListener("scroll", update, { passive: true });
   }
 
+  /* ---------- v3 interface: progress line, chapter index, reveals, wings gallery, week strip ---------- */
+  function scrollChrome() {
+    const bar = $("#progress");
+    const cta = $("#float-cta");
+    const hero = $(".hero");
+    let ticketsInView = false;
+    const update = () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      if (bar) bar.style.width = `${max > 0 ? (scrollY / max) * 100 : 0}%`;
+      if (cta && hero) cta.classList.toggle("show", scrollY > hero.offsetHeight - 100 && !ticketsInView);
+    };
+    const tickets = $("#tickets");
+    if (tickets && "IntersectionObserver" in window) {
+      new IntersectionObserver((entries) => { ticketsInView = entries[0].isIntersecting; update(); }, { rootMargin: "-20% 0px -20% 0px" }).observe(tickets);
+    }
+    update();
+    addEventListener("scroll", update, { passive: true });
+  }
+
+  function chapterIndex() {
+    const nav = $("#chapters");
+    if (!nav || !("IntersectionObserver" in window)) return;
+    const links = $$("a", nav);
+    const dark = new Set(["watch", "plan"]);
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === `#${en.target.id}`));
+        nav.classList.toggle("on-dark", dark.has(en.target.id));
+      });
+    }, { rootMargin: "-40% 0px -50% 0px" });
+    links.forEach((a) => { const el = $(a.getAttribute("href")); if (el) io.observe(el); });
+  }
+
+  function reveals() {
+    const els = $$("[data-reveal]");
+    if (!els.length || !("IntersectionObserver" in window)) { els.forEach((el) => el.classList.add("in")); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+    }, { rootMargin: "0px 0px -10% 0px" });
+    els.forEach((el) => io.observe(el));
+  }
+
+  function wingsGallery() {
+    const track = $("#walk-track");
+    if (!track) return;
+    const panels = $$(".wing-panel", track);
+    const dots = $("#walk-dots");
+    const prev = $("#walk-prev"), next = $("#walk-next");
+    dots.innerHTML = panels.map(() => "<span></span>").join("");
+    const step = () => panels[0].getBoundingClientRect().width + 18;
+    const index = () => Math.round(track.scrollLeft / step());
+    const update = () => {
+      const i = Math.min(index(), panels.length - 1);
+      $$("span", dots).forEach((d, k) => d.classList.toggle("active", k === i));
+      prev.disabled = track.scrollLeft <= 4;
+      next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    };
+    prev.addEventListener("click", () => track.scrollBy({ left: -step(), behavior: "smooth" }));
+    next.addEventListener("click", () => track.scrollBy({ left: step(), behavior: "smooth" }));
+    track.addEventListener("scroll", update, { passive: true });
+    addEventListener("resize", update);
+    update();
+  }
+
+  function weekStrip() {
+    const box = $("#week");
+    if (!box) return;
+    const today = new Date().getDay();
+    const short = { 0: "8–21", 1: "8–21", 2: "8–21", 3: "8–21", 4: "8–21", 5: "16–21", 6: "Groups" };
+    box.innerHTML = DAY_NAMES.map((d, i) => `<span class="${i === today ? "today" : ""}"><b>${d}</b>${short[i]}</span>`).join("");
+  }
+
   markToday();
   heroFilm();
   headerOnScroll();
+  scrollChrome();
+  chapterIndex();
+  reveals();
+  wingsGallery();
+  weekStrip();
   render();
 })();

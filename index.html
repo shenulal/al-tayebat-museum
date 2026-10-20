@@ -41,6 +41,19 @@
 </g></symbol>
   </svg>
   <a class="sr-only" href="#main">Skip to content</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <nav class="chapters" id="chapters" aria-label="Chapters">
+    <ol>
+      <li><a href="#story"><span>The house</span></a></li>
+      <li><a href="#walk"><span>The walk</span></a></li>
+      <li><a href="#lexicon"><span>Words</span></a></li>
+      <li><a href="#watch"><span>Films</span></a></li>
+      <li><a href="#plan"><span>Plan</span></a></li>
+      <li><a href="#tickets"><span>Tickets</span></a></li>
+      <li><a href="#faq"><span>Questions</span></a></li>
+    </ol>
+  </nav>
+  <a class="btn btn-primary float-cta" id="float-cta" href="#tickets">Book tickets</a>
 
   <header class="site-header" id="site-header">
     <div class="wrap">
@@ -108,7 +121,7 @@
 
     <section class="story" id="story" aria-labelledby="story-heading">
       <div class="wrap">
-        <div class="title">
+        <div class="title" data-reveal>
           <span class="ar">حكاية البيت</span>
           <h2 id="story-heading">A private collection that grew into <em>a city</em>.</h2>
         </div>
@@ -131,7 +144,7 @@
           </div>
         </div>
         <p class="pull">Built so that a city would not forget itself.<span class="ar">بُنيت كي لا تنسى المدينة نفسها</span></p>
-        <div class="mark-note" id="mark">
+        <div class="mark-note" id="mark" data-reveal>
           <svg class="mark-note-emblem" aria-label="The Al Tayebat emblem"><use href="#tyb-mark"/></svg>
           <div>
             <span class="ar" style="font-size:1.3rem;color:var(--teak-soft)">الشعار</span>
@@ -145,91 +158,98 @@
 
     <section class="walk" id="walk" aria-labelledby="walk-heading">
       <div class="wrap">
-        <div class="title">
-          <span class="ar">جولة في الأجنحة</span>
-          <h2 id="walk-heading">The walk, <em>house by house</em>.</h2>
+        <div class="walk-head">
+          <div class="title" data-reveal>
+            <span class="ar">جولة في الأجنحة</span>
+            <h2 id="walk-heading">The walk, <em>house by house</em>.</h2>
+          </div>
+          <div class="walk-controls">
+            <button type="button" id="walk-prev" aria-label="Previous wing"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3 5 9l6 6"/></svg></button>
+            <button type="button" id="walk-next" aria-label="Next wing"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m7 3 6 6-6 6"/></svg></button>
+          </div>
         </div>
-        <div class="route">
-          <article class="stop">
-            <span class="stop-dot" aria-hidden="true"></span>
-            <div class="stop-text">
+        <div class="walk-track" id="walk-track" tabindex="0" aria-label="The wings, scroll sideways">
+          <article class="wing-panel">
+            <figure class="wing-media" style="margin:0">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Nezami_Khamsa_%28Taybat_Museum%29.jpg" alt="Open illuminated manuscript of Nezami's Khamsa in a display case" loading="lazy">
+              <figcaption>Clemens Schmillen, CC BY-SA 4.0</figcaption>
+            </figure>
+            <div class="wing-body">
+              <span class="wing-n">01</span>
               <span class="ar">بيت التراث الإسلامي</span>
               <h3>The House of Islamic Heritage</h3>
               <p>Qur'an manuscripts from the early centuries, astrolabes and brass instruments, and the Khamsa of Nezami copied in 1495. At the centre, a model of the Holy Mosque with the Hajj route around it, built so that pilgrims could show their families where they had walked.</p>
               <p class="rooms">Manuscripts · Calligraphy · Instruments of the sky · The Makkah model</p>
             </div>
-            <figure class="stop-media tall tilt-r">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Nezami_Khamsa_%28Taybat_Museum%29.jpg" alt="Open illuminated manuscript of Nezami's Khamsa in a display case" loading="lazy">
-              <figcaption>The Khamsa, 1495. Photo: Clemens Schmillen, CC BY-SA 4.0</figcaption>
-            </figure>
           </article>
-          <article class="stop">
-            <span class="stop-dot" aria-hidden="true"></span>
-            <div class="stop-text">
+          <article class="wing-panel">
+            <figure class="wing-media" style="margin:0">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Old_Jeddah_-_55362178648.jpg/1920px-Old_Jeddah_-_55362178648.jpg" alt="Carved dark teak rawasheen balconies on a white Hijazi facade in old Jeddah" loading="lazy">
+              <figcaption>Rawasheen in Al Balad · xiquinhosilva, CC BY 4.0</figcaption>
+            </figure>
+            <div class="wing-body">
+              <span class="wing-n">02</span>
               <span class="ar">بيت التراث السعودي</span>
               <h3>The Houses of the Kingdom</h3>
               <p>Each region keeps its own house. The Jeddah rooms are a merchant's home with its majlis and kitchen; the Najd rooms are mud and tamarisk; Asir arrives in painted colour. The costume pavilion runs north to south: the zaboun and mahram of the Hijaz, the gilded bisht of Al Ahsa, the silver and garlands of the south.</p>
               <p class="rooms">Jeddah · Makkah · Madinah · Riyadh · Al Ahsa · Asir · The North</p>
             </div>
-            <figure class="stop-media wide tilt-l">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Old_Jeddah_-_55362178648.jpg/1920px-Old_Jeddah_-_55362178648.jpg" alt="Carved dark teak rawasheen balconies on a white Hijazi facade in old Jeddah" loading="lazy">
-              <figcaption>Rawasheen in Al Balad, the model for the museum's own. Photo: xiquinhosilva, CC BY 4.0</figcaption>
-            </figure>
           </article>
-          <article class="stop">
-            <span class="stop-dot" aria-hidden="true"></span>
-            <div class="stop-text">
+          <article class="wing-panel">
+            <div class="wing-media wing-glyph" aria-hidden="true"><span>ريال</span></div>
+            <div class="wing-body">
+              <span class="wing-n">03</span>
               <span class="ar">جناح العملات والتراث</span>
               <h3>Coins, paper and the founding of the state</h3>
               <p>Hashemite and Ottoman coinage, the first Saudi riyal, early banknotes, and the rooms given to King Abdulaziz: weapons, letters, and the objects of a court that was still a camp.</p>
               <p class="rooms">Currency · Weapons · The King Abdulaziz rooms</p>
             </div>
-            <figure class="stop-media empty" aria-hidden="true"><span>ريال</span></figure>
           </article>
-          <article class="stop">
-            <span class="stop-dot" aria-hidden="true"></span>
-            <div class="stop-text">
+          <article class="wing-panel">
+            <div class="wing-media wing-glyph" aria-hidden="true"><span>بحر</span></div>
+            <div class="wing-body">
+              <span class="wing-n">04</span>
               <span class="ar">بيت التراث العالمي</span>
               <h3>The House of International Heritage</h3>
               <p>Jeddah was a port before it was anything else. These rooms hold what came through it: Chinese porcelain, Indian textiles, African carving, European clocks, the trade of a Red Sea city that fed Makkah.</p>
               <p class="rooms">Porcelain · Textiles · Clocks · The trade of the Red Sea</p>
             </div>
-            <figure class="stop-media empty" aria-hidden="true"><span>بحر</span></figure>
           </article>
-          <article class="stop">
-            <span class="stop-dot" aria-hidden="true"></span>
-            <div class="stop-text">
+          <article class="wing-panel">
+            <div class="wing-media wing-glyph" aria-hidden="true"><span>علم</span></div>
+            <div class="wing-body">
+              <span class="wing-n">05</span>
               <span class="ar">قاعات العلوم والمعرفة</span>
               <h3>Science and knowledge</h3>
               <p>The halls that give the city its name: the sciences of the Islamic world set beside the technology that changed the Kingdom in a single lifetime, from the first radio to the first oil well.</p>
               <p class="rooms">Astronomy · Medicine · The Kingdom's first century</p>
             </div>
-            <figure class="stop-media empty" aria-hidden="true"><span>علم</span></figure>
           </article>
         </div>
+        <div class="walk-dots" id="walk-dots" aria-hidden="true"></div>
       </div>
     </section>
 
     <section class="lexicon" id="lexicon" aria-labelledby="lexicon-heading">
       <div class="wrap">
-        <div class="title">
+        <div class="title" data-reveal>
           <span class="ar">مفردات البيت الحجازي</span>
           <h2 id="lexicon-heading">Words you will need <em>inside</em>.</h2>
         </div>
         <dl>
-          <div><dt>Rawasheen <span class="ar">رواشين</span></dt><dd>The projecting wooden balconies, carved and latticed, that cover a Hijazi facade. They shade the wall, catch the breeze and let the house look out without being looked into. The museum's are carved in teak, like the old ones in Al Balad.</dd></div>
-          <div><dt>Manjur <span class="ar">منجور</span></dt><dd>The turned-wood lattice itself, the pattern of small spindles inside a roshan. Count the spindles; the finer they are, the richer the house.</dd></div>
-          <div><dt>Hajar manqabi <span class="ar">حجر منقبي</span></dt><dd>Coral limestone cut from the reef at Manqabah, the stone of every old house in Jeddah. Soft when quarried, it hardens in air and keeps rooms cool.</dd></div>
-          <div><dt>Nura <span class="ar">نورة</span></dt><dd>Lime plaster, burnt and slaked, then washed white over the coral. It is why the houses glow at dusk and why the city here is white.</dd></div>
-          <div><dt>Majlis <span class="ar">مجلس</span></dt><dd>The sitting room where guests are received: cushions along the walls, coffee in the corner. Several of the houses keep theirs furnished, and the courtyard majlis still serves tea.</dd></div>
-          <div><dt>Mangad <span class="ar">منقد</span></dt><dd>The raised seat under the roshan where the owner sat to catch the wind and watch the lane. The best seat in a Hijazi house.</dd></div>
+          <div data-ar="رواشين"><dt>Rawasheen <span class="ar">رواشين</span></dt><dd>The projecting wooden balconies, carved and latticed, that cover a Hijazi facade. They shade the wall, catch the breeze and let the house look out without being looked into. The museum's are carved in teak, like the old ones in Al Balad.</dd></div>
+          <div data-ar="منجور"><dt>Manjur <span class="ar">منجور</span></dt><dd>The turned-wood lattice itself, the pattern of small spindles inside a roshan. Count the spindles; the finer they are, the richer the house.</dd></div>
+          <div data-ar="حجر منقبي"><dt>Hajar manqabi <span class="ar">حجر منقبي</span></dt><dd>Coral limestone cut from the reef at Manqabah, the stone of every old house in Jeddah. Soft when quarried, it hardens in air and keeps rooms cool.</dd></div>
+          <div data-ar="نورة"><dt>Nura <span class="ar">نورة</span></dt><dd>Lime plaster, burnt and slaked, then washed white over the coral. It is why the houses glow at dusk and why the city here is white.</dd></div>
+          <div data-ar="مجلس"><dt>Majlis <span class="ar">مجلس</span></dt><dd>The sitting room where guests are received: cushions along the walls, coffee in the corner. Several of the houses keep theirs furnished, and the courtyard majlis still serves tea.</dd></div>
+          <div data-ar="منقد"><dt>Mangad <span class="ar">منقد</span></dt><dd>The raised seat under the roshan where the owner sat to catch the wind and watch the lane. The best seat in a Hijazi house.</dd></div>
         </dl>
       </div>
     </section>
 
     <section class="watch" id="watch" aria-labelledby="watch-heading">
       <div class="wrap">
-        <div class="title">
+        <div class="title" data-reveal>
           <span class="ar">شاهد قبل الزيارة</span>
           <h2 id="watch-heading">Walk through <em>before you arrive</em>.</h2>
         </div>
@@ -267,13 +287,14 @@
 
     <section class="plan" id="plan" aria-labelledby="plan-heading">
       <div class="wrap">
-        <div class="title">
+        <div class="title" data-reveal>
           <span class="ar">خطط لزيارتك</span>
           <h2 id="plan-heading">Plan <em>your visit</em>.</h2>
         </div>
         <div class="plan-grid">
-          <div>
+          <div class="plan-card">
             <h3>Opening hours</h3>
+            <div class="week" id="week" aria-hidden="true"></div>
             <table class="hours" id="hours-table">
               <tbody>
                 <tr data-day="0"><td>Sunday</td><td>8:00 – 21:00</td></tr>
@@ -287,7 +308,7 @@
             </table>
             <p class="plan-note">Some days are kept for school groups or families. Call ahead for Friday and Saturday.</p>
           </div>
-          <div>
+          <div class="plan-card">
             <h3>Getting here</h3>
             <address>
               Rayhanat Al Jazirah Street<br>
@@ -299,7 +320,7 @@
             </div>
             <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=21.5806371%2C39.1765542" target="_blank" rel="noopener">Open in Google Maps</a>
           </div>
-          <div class="tips">
+          <div class="tips plan-card">
             <h3>Good to know</h3>
             <p>Fifteen minutes from the Corniche, twenty from King Abdulaziz airport, with free parking at the main gate. Guided tours run in Arabic and English and come with the Guided Heritage ticket.</p>
             <p>The Makkah model and the manuscript rooms fill up on busy afternoons; go there first. Photography without flash is welcome in most rooms.</p>
@@ -311,7 +332,7 @@
 
     <section class="tickets" id="tickets" aria-labelledby="tickets-heading">
       <div class="wrap">
-        <div class="title">
+        <div class="title" data-reveal>
           <span class="ar">تذكرتك</span>
           <h2 id="tickets-heading">Your ticket, <em>in under a minute</em>.</h2>
         </div>
@@ -444,7 +465,7 @@
 
     <section class="groups" id="groups" aria-labelledby="groups-heading">
       <div class="wrap">
-        <div class="band">
+        <div class="band" data-reveal>
           <div>
             <span class="ar" style="font-size:1.4rem;color:var(--teak-soft)">المدارس والمجموعات</span>
             <h2 id="groups-heading">Bringing a class, a delegation or a wedding party?</h2>
@@ -462,7 +483,7 @@
 
     <section class="faq" id="faq" aria-labelledby="faq-heading">
       <div class="wrap">
-        <div class="title">
+        <div class="title" data-reveal>
           <span class="ar">أسئلة الزوار</span>
           <h2 id="faq-heading">Questions <em>visitors ask</em>.</h2>
         </div>
