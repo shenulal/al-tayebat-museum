@@ -7,6 +7,9 @@
   <meta name="description" content="Twelve Hijazi houses, three hundred rooms and the story of the Kingdom. Plan your visit and book tickets to Al Tayebat International City in Al Faisaliyah, Jeddah.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
+  <link rel="preconnect" href="https://i.ytimg.com">
+  <link rel="preconnect" href="https://www.google.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=Amiri:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
@@ -68,8 +71,17 @@
   <main id="main">
     <section class="hero" id="top" aria-labelledby="hero-heading">
       <div class="hero-film" id="hero-film" data-video="KCJ313wq-m0">
+        <iframe id="hero-iframe" title="Al Tayebat Museum, film running in the background" data-src="https://www.youtube-nocookie.com/embed/KCJ313wq-m0?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=KCJ313wq-m0&amp;controls=0&amp;rel=0&amp;modestbranding=1&amp;playsinline=1&amp;enablejsapi=1&amp;start=70" allow="autoplay; encrypted-media" aria-hidden="true" tabindex="-1" loading="eager"></iframe>
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Tayebat_City_Museum%2C_Jeddah%2C_Saudi_Arabia_%282025%29.jpg/1920px-Tayebat_City_Museum%2C_Jeddah%2C_Saudi_Arabia_%282025%29.jpg" alt="Minaret and carved teak rawasheen balconies of Al Tayebat City Museum" width="1280" height="1920" loading="eager" fetchpriority="high">
       </div>
+      <script>
+        (function () {
+          var f = document.getElementById("hero-iframe");
+          var still = matchMedia("(prefers-reduced-motion: reduce)").matches || (navigator.connection && navigator.connection.saveData);
+          if (still) { f.remove(); return; }
+          f.src = f.dataset.src;
+        })();
+      </script>
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="hero-grid" aria-hidden="true"></div>
       <p class="hero-credit">Film: Al Tayebat Museum, YouTube · Still: <a href="https://commons.wikimedia.org/wiki/File:Tayebat_City_Museum,_Jeddah,_Saudi_Arabia_(2025).jpg" target="_blank" rel="noopener">SPA, CC BY-SA 4.0</a></p>

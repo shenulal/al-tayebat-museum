@@ -393,36 +393,29 @@
      Loads only when the tab is visible and motion is allowed; the still stays otherwise. */
   function heroFilm() {
     const box = $("#hero-film");
-    if (!box) return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const saveData = navigator.connection && navigator.connection.saveData;
+    const iframe = $("#hero-iframe");
     document.documentElement.classList.add("anim");
     setTimeout(() => document.documentElement.classList.remove("anim"), 2500);
-    if (reduced || saveData || document.visibilityState !== "visible") return;
-    const id = box.dataset.video;
-    const iframe = document.createElement("iframe");
-    iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&start=70`;
-    iframe.title = "Al Tayebat Museum, film running in the background";
-    iframe.allow = "autoplay; encrypted-media";
-    iframe.setAttribute("aria-hidden", "true");
-    iframe.tabIndex = -1;
-    box.appendChild(iframe);
+    if (!box || !iframe) return;
     const toggle = $("#sound-toggle");
     let muted = true;
+    const show = () => { if (!box.classList.contains("playing")) { box.classList.add("playing"); toggle.hidden = false; } };
     const send = (func) => iframe.contentWindow && iframe.contentWindow.postMessage(JSON.stringify({ event: "command", func, args: "" }), "*");
+    let ready = false;
     window.addEventListener("message", (e) => {
       if (e.origin !== "https://www.youtube-nocookie.com") return;
       let data; try { data = JSON.parse(e.data); } catch (err) { return; }
-      if (data.event === "onStateChange" && data.info === 1 && !box.classList.contains("playing")) {
-        box.classList.add("playing");
-        toggle.hidden = false;
-      }
-      if (data.event === "onReady") send("playVideo");
+      if (data.event === "onReady") { ready = true; send("playVideo"); }
+      if (data.event === "infoDelivery" && data.info && data.info.playerState === 1) show();
+      if (data.event === "onStateChange" && data.info === 1) show();
     });
-    iframe.addEventListener("load", () => {
-      iframe.contentWindow.postMessage(JSON.stringify({ event: "listening", id: 1 }), "*");
-      setTimeout(() => { if (!box.classList.contains("playing")) { box.classList.add("playing"); toggle.hidden = false; } }, 4000);
-    });
+    // The player may finish loading before this script runs, so keep asking to listen until it answers.
+    const listen = () => iframe.contentWindow && iframe.contentWindow.postMessage(JSON.stringify({ event: "listening", id: 1 }), "*");
+    const poll = setInterval(() => { if (ready) clearInterval(poll); else listen(); }, 300);
+    iframe.addEventListener("load", listen);
+    listen();
+    setTimeout(() => clearInterval(poll), 15000);
+    setTimeout(show, 8000);
     toggle.addEventListener("click", () => {
       muted = !muted;
       send(muted ? "mute" : "unMute");
